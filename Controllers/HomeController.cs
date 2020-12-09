@@ -59,11 +59,9 @@ namespace SportsORM.Controllers
                 .Where(l => l.TeamName.StartsWith("T"))
                 .ToList();
                 ViewBag.OrderedAlpha = _context.Teams
-                .Where(l => l.Location.Contains(""))
                 .OrderBy(l => l.Location)
                 .ToList();
                 ViewBag.RevAlpha = _context.Teams
-                .Where(l => l.TeamName.Contains(""))
                 .OrderByDescending(l => l.TeamName)
                 .ToList();
                                 ViewBag.Cooper = _context.Players
@@ -77,12 +75,8 @@ namespace SportsORM.Controllers
                 .Where(l => l.LastName.Contains("Cooper"))
                 .ToList(); 
                 ViewBag.AlOrWy = _context.Players
-                .Where(l => l.FirstName.Contains("Alexander"))
-                .ToList();                  
-                ViewBag.Wy = _context.Players
-                .Where(l => l.FirstName.Contains("Wyatt"))
-                .ToList();                  
-
+                .Where(l => l.FirstName.Contains("Alexander") || l.FirstName.Contains("Wyatt"))
+                .ToList();                                  
             return View();
         }
 
